@@ -31,8 +31,10 @@ flow: |
 
     for(i=0; i<template.links.length; i++) {
       if (target_is_in_scope(template.links[i])) {
-
         var path = template.links[i].replace(template.http_1_host, "");
+        if (!path.startsWith("/")) {
+          path = "/" + path;
+        }
         var path_split = path.split("/");
         var path_to_check = "";
 
